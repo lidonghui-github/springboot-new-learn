@@ -5,6 +5,7 @@
     <modules>
         <module>springboot-json</module>
         <module>springboot-slf4j</module>
+        <module>springboot-global-exception</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
