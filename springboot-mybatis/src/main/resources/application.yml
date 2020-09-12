@@ -9,8 +9,15 @@ logging:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/springboot-new-learn?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
   devtools:
     add-properties: false
+# mybatis配置
+mybatis:
+  type-aliases-package: cn.hd.entity         # 别名映射
+  mapper-locations: classpath:mapper/*.xml   # xml文件位置
+  check-config-location: false
+  configuration:
+    map-underscore-to-camel-case: true   # 驼峰命名

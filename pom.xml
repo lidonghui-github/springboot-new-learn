@@ -7,6 +7,7 @@
         <module>springboot-slf4j</module>
         <module>springboot-global-exception</module>
         <module>springboot-aop</module>
+        <module>springboot-mybatis</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
