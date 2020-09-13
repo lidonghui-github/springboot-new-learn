@@ -10,6 +10,7 @@
         <module>springboot-mybatis</module>
         <module>springboot-transaction</module>
         <module>springboot-listener</module>
+        <module>springboot-interceptor</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
