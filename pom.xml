@@ -8,6 +8,7 @@
         <module>springboot-global-exception</module>
         <module>springboot-aop</module>
         <module>springboot-mybatis</module>
+        <module>springboot-transaction</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
