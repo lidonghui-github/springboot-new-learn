@@ -9,6 +9,7 @@
         <module>springboot-aop</module>
         <module>springboot-mybatis</module>
         <module>springboot-transaction</module>
+        <module>springboot-listener</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
