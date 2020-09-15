@@ -2,6 +2,7 @@ logging:
   config: classpath:logback.xml
   level:
     cn.hd.controller: info
+  file: myspringboot-listener.log
 
 
 

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hd.mytest.dao.TReqLogDao">
+
+    <resultMap type="cn.hd.mytest.entity.TReqLog" id="TReqLogMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="reqUrl" column="req_url" jdbcType="VARCHAR"/>
+        <result property="reqUri" column="req_uri" jdbcType="VARCHAR"/>
+        <result property="reqSessionId" column="req_session_id" jdbcType="VARCHAR"/>
+        <result property="reqMethodName" column="req_method_name" jdbcType="VARCHAR"/>
+        <result property="reqIp" column="req_ip" jdbcType="VARCHAR"/>
+        <result property="reqParamCount" column="req_param_count" jdbcType="INTEGER"/>
+        <result property="reqMethodType" column="req_method_type" jdbcType="VARCHAR"/>
+        <result property="reqMethodReturnType" column="req_method_return_type" jdbcType="VARCHAR"/>
+        <result property="reqMethodAnnotationType" column="req_method_annotation_type" jdbcType="VARCHAR"/>
+        <result property="reqCrtTime" column="req_crt_time" jdbcType="TIMESTAMP"/>
+        <result property="reqEndTime" column="req_end_time" jdbcType="TIMESTAMP"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TReqLogMap">
+        select id,
+               req_url,
+               req_uri,
+               req_session_id,
+               req_method_name,
+               req_ip,
+               req_param_count,
+               req_method_type,
+               req_method_return_type,
+               req_method_annotation_type,
+               req_crt_time,
+               req_end_time,
+               remark
+        from t_req_log
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TReqLogMap">
+        select id,
+               req_url,
+               req_uri,
+               req_session_id,
+               req_method_name,
+               req_ip,
+               req_param_count,
+               req_method_type,
+               req_method_return_type,
+               req_method_annotation_type,
+               req_crt_time,
+               req_end_time,
+               remark
+        from t_req_log
+        limit #{offset}
+           , #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="TReqLogMap">
+        select
+        id, req_url, req_uri, req_session_id, req_method_name, req_ip, req_param_count, req_method_type,
+        req_method_return_type, req_method_annotation_type, req_crt_time, req_end_time, remark
+        from t_req_log
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="reqUrl != null and reqUrl != ''">
+                and req_url = #{reqUrl}
+            </if>
+            <if test="reqUri != null and reqUri != ''">
+                and req_uri = #{reqUri}
+            </if>
+            <if test="reqSessionId != null and reqSessionId != ''">
+                and req_session_id = #{reqSessionId}
+            </if>
+            <if test="reqMethodName != null and reqMethodName != ''">
+                and req_method_name = #{reqMethodName}
+            </if>
+            <if test="reqIp != null and reqIp != ''">
+                and req_ip = #{reqIp}
+            </if>
+            <if test="reqParamCount != null">
+                and req_param_count = #{reqParamCount}
+            </if>
+            <if test="reqMethodType != null and reqMethodType != ''">
+                and req_method_type = #{reqMethodType}
+            </if>
+            <if test="reqMethodReturnType != null and reqMethodReturnType != ''">
+                and req_method_return_type = #{reqMethodReturnType}
+            </if>
+            <if test="reqMethodAnnotationType != null and reqMethodAnnotationType != ''">
+                and req_method_annotation_type = #{reqMethodAnnotationType}
+            </if>
+            <if test="reqCrtTime != null">
+                and req_crt_time = #{reqCrtTime}
+            </if>
+            <if test="reqEndTime != null">
+                and req_end_time = #{reqEndTime}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into t_req_log(req_url, req_uri, req_session_id, req_method_name, req_ip,
+                                                   req_param_count, req_method_type, req_method_return_type,
+                                                   req_method_annotation_type, req_crt_time, req_end_time, remark)
+        values (#{reqUrl}, #{reqUri}, #{reqSessionId}, #{reqMethodName}, #{reqIp}, #{reqParamCount}, #{reqMethodType}, #{reqMethodReturnType}, #{reqMethodAnnotationType}, #{reqCrtTime}, #{reqEndTime}, #{remark})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_req_log
+        <set>
+            <if test="reqUrl != null and reqUrl != ''">
+                req_url = #{reqUrl},
+            </if>
+            <if test="reqUri != null and reqUri != ''">
+                req_uri = #{reqUri},
+            </if>
+            <if test="reqSessionId != null and reqSessionId != ''">
+                req_session_id = #{reqSessionId},
+            </if>
+            <if test="reqMethodName != null and reqMethodName != ''">
+                req_method_name = #{reqMethodName},
+            </if>
+            <if test="reqIp != null and reqIp != ''">
+                req_ip = #{reqIp},
+            </if>
+            <if test="reqParamCount != null">
+                req_param_count = #{reqParamCount},
+            </if>
+            <if test="reqMethodType != null and reqMethodType != ''">
+                req_method_type = #{reqMethodType},
+            </if>
+            <if test="reqMethodReturnType != null and reqMethodReturnType != ''">
+                req_method_return_type = #{reqMethodReturnType},
+            </if>
+            <if test="reqMethodAnnotationType != null and reqMethodAnnotationType != ''">
+                req_method_annotation_type = #{reqMethodAnnotationType},
+            </if>
+            <if test="reqCrtTime != null">
+                req_crt_time = #{reqCrtTime},
+            </if>
+            <if test="reqEndTime != null">
+                req_end_time = #{reqEndTime},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from t_req_log
+        where id = #{id}
+    </delete>
+
+</mapper>

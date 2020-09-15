@@ -16,8 +16,8 @@ public class MyServletRequestListener implements ServletRequestListener {
     @Override
     public void requestDestroyed(ServletRequestEvent servletRequestEvent) {
         log.info("request end");
-        HttpServletRequest request = (HttpServletRequest)
-                servletRequestEvent.getServletRequest();
+        HttpServletRequest request = (HttpServletRequest)servletRequestEvent.getServletRequest();
+
         log.info("request域中保存的name值为：{}", request.getAttribute("name"));
     }
 
