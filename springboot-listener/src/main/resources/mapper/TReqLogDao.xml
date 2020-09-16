@@ -107,11 +107,11 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into t_req_log(req_url, req_uri, req_session_id, req_method_name, req_ip,
+    <insert id="insert" >
+        insert into t_req_log(id,req_url, req_uri, req_session_id, req_method_name, req_ip,
                                                    req_param_count, req_method_type, req_method_return_type,
                                                    req_method_annotation_type, req_crt_time, req_end_time, remark)
-        values (#{reqUrl}, #{reqUri}, #{reqSessionId}, #{reqMethodName}, #{reqIp}, #{reqParamCount}, #{reqMethodType}, #{reqMethodReturnType}, #{reqMethodAnnotationType}, #{reqCrtTime}, #{reqEndTime}, #{remark})
+        values (#{id},#{reqUrl}, #{reqUri}, #{reqSessionId}, #{reqMethodName}, #{reqIp}, #{reqParamCount}, #{reqMethodType}, #{reqMethodReturnType}, #{reqMethodAnnotationType}, #{reqCrtTime}, #{reqEndTime}, #{remark})
     </insert>
 
     <!--通过主键修改数据-->

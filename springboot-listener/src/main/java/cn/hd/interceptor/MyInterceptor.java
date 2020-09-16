@@ -32,6 +32,7 @@ public class MyInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
+        request.getSession().getServletContext().setAttribute("method", method);
         String methodName = method.getName();
         log.info("====拦截到了方法：{}，在该方法执行之前执行====", methodName);
         int parameterCount = method.getParameterCount();
@@ -47,7 +48,7 @@ public class MyInterceptor implements HandlerInterceptor {
         log.info("此次请求的SESSIONID是:{}", request.getSession().getId());
         log.info("此次请求的URL是:{}", request.getRequestURL());
         log.info("此次请求的IP是:{}", request.getLocalAddr());
-        dealReqLog(request, method);
+      //  dealReqLog(request, method);
         // 判断用户有没有登陆，一般登陆之后的用户都有一个对应的token
         String token = request.getParameter("token");
        /* if (null == token || "".equals(token)) {
@@ -117,7 +118,7 @@ public class MyInterceptor implements HandlerInterceptor {
         tReqLog.setReqMethodType(request.getMethod().toUpperCase());
         tReqLog.setReqMethodReturnType(method.getReturnType().getTypeName());
         String ano = method.getDeclaredAnnotations()[0].toString();
-        System.out.println(ano.substring(0,ano.indexOf("(")));
+        System.out.println(ano.substring(0, ano.indexOf("(")));
         tReqLog.setReqMethodAnnotationType(method.getDeclaredAnnotations()[0].toString().substring(0, (method.getDeclaredAnnotations()[0].toString().indexOf("("))));
         Connection connection = null;
         try {
